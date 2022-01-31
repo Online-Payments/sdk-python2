@@ -4,7 +4,6 @@
 from abc import ABCMeta, abstractmethod
 
 
-
 class IProductsClient:
     """
     Products client interface. Thread-safe.

@@ -3,10 +3,10 @@ from ConfigParser import ConfigParser
 from client import Client
 from communicator import Communicator
 from communicator_configuration import CommunicatorConfiguration
+from meta_data_provider import MetaDataProvider
 from onlinepayments.sdk.defaultimpl.default_authenticator import DefaultAuthenticator
 from onlinepayments.sdk.defaultimpl.default_connection import DefaultConnection
 from onlinepayments.sdk.defaultimpl.default_marshaller import DefaultMarshaller
-from meta_data_provider import MetaDataProvider
 
 
 class Factory:

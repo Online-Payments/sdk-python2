@@ -12,7 +12,6 @@ from onlinepayments.sdk.endpoint_configuration import EndpointConfiguration
 from onlinepayments.sdk.log.request_log_message import RequestLogMessage
 from onlinepayments.sdk.log.response_log_message import ResponseLogMessage
 from onlinepayments.sdk.pooled_connection import PooledConnection
-from onlinepayments.sdk.response_header import get_header_value
 
 CHARSET = "UTF-8"
 

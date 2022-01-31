@@ -21,7 +21,7 @@ def load_tests(loader, tests, pattern):
     integration_dir = os.path.join(testDirectory, "integration")
     integration_tests = loader.discover(start_dir=integration_dir, pattern="test_*.py", top_level_dir=integration_dir)
     tests.addTests(integration_tests)
-    
+
     return tests
 
 

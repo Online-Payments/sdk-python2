@@ -4,7 +4,6 @@
 from abc import ABCMeta, abstractmethod
 
 
-
 class ITokensClient:
     """
     Tokens client interface. Thread-safe.

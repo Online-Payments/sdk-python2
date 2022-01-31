@@ -4,7 +4,6 @@
 from abc import ABCMeta, abstractmethod
 
 
-
 class IPaymentsClient:
     """
     Payments client interface. Thread-safe.

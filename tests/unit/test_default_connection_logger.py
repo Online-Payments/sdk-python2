@@ -8,7 +8,6 @@ from requests.exceptions import Timeout
 import tests.file_utils as file_utils
 from onlinepayments.sdk.communication_exception import CommunicationException
 from onlinepayments.sdk.declined_payment_exception import DeclinedPaymentException
-from onlinepayments.sdk.payment_platform_exception import PaymentPlatformException
 from onlinepayments.sdk.domain.address import Address
 from onlinepayments.sdk.domain.amount_of_money import AmountOfMoney
 from onlinepayments.sdk.domain.card import Card
@@ -19,6 +18,7 @@ from onlinepayments.sdk.domain.order import Order
 from onlinepayments.sdk.log.communicator_logger import CommunicatorLogger
 from onlinepayments.sdk.merchant.products.get_payment_product_params import GetPaymentProductParams
 from onlinepayments.sdk.not_found_exception import NotFoundException
+from onlinepayments.sdk.payment_platform_exception import PaymentPlatformException
 from onlinepayments.sdk.validation_exception import ValidationException
 from tests.unit.server_mock_utils import create_client, create_server_listening
 

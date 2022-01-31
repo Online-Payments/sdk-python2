@@ -4,7 +4,7 @@ Online Payments Python SDK
 Introduction
 ------------
 
-The Python SDK helps you to communicate with the payment platform Server
+The Python SDK helps you to communicate with the payment platform server
 API. Its primary features are:
 
 -  convenient Python library for the API calls and responses
@@ -54,8 +54,9 @@ To install the SDK using pip, execute the following command:
 Alternatively, you can install the SDK from a source distribution file:
 
 #. Download the latest version of the Python SDK from GitHub. Choose the
-   ``onlinepayments-sdk-python2-x.y.z.zip`` file from the releases page
-   of the Github repository, where ``x.y.z`` is the version number.
+   ``onlinepayments-sdk-python2-x.y.z.zip`` file from the
+   `releases <https://github.com/wl-online-payments-direct/sdk-python2/releases>`__
+   page, where ``x.y.z`` is the version number.
 #. Execute the following command in the folder where the SDK was
    downloaded to:
 

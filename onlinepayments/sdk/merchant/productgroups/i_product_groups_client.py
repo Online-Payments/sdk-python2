@@ -4,7 +4,6 @@
 from abc import ABCMeta, abstractmethod
 
 
-
 class IProductGroupsClient:
     """
     ProductGroups client interface. Thread-safe.

@@ -4,7 +4,6 @@
 from abc import ABCMeta, abstractmethod
 
 
-
 class IServicesClient:
     """
     Services client interface. Thread-safe.

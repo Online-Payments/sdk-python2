@@ -3,12 +3,12 @@ from authorization_exception import AuthorizationException
 from declined_payment_exception import DeclinedPaymentException
 from declined_payout_exception import DeclinedPayoutException
 from declined_refund_exception import DeclinedRefundException
-from payment_platform_exception import PaymentPlatformException
 from domain.error_response import ErrorResponse
 from domain.payment_error_response import PaymentErrorResponse
 from domain.payout_error_response import PayoutErrorResponse
 from domain.refund_error_response import RefundErrorResponse
 from idempotence_exception import IdempotenceException
+from payment_platform_exception import PaymentPlatformException
 from reference_exception import ReferenceException
 from request_header import RequestHeader
 from validation_exception import ValidationException

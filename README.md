@@ -38,7 +38,7 @@ To install the SDK using pip, execute the following command:
 
 Alternatively, you can install the SDK from a source distribution file:
 
-1. Download the latest version of the Python SDK from GitHub. Choose the `onlinepayments-sdk-python2-x.y.z.zip` file from the releases page of the Github repository, where `x.y.z` is the version number.
+1. Download the latest version of the Python SDK from GitHub. Choose the `onlinepayments-sdk-python2-x.y.z.zip` file from the [releases](https://github.com/Online-Payments/sdk-python2/releases) page, where `x.y.z` is the version number.
 2. Execute the following command in the folder where the SDK was downloaded to:
     
     ```

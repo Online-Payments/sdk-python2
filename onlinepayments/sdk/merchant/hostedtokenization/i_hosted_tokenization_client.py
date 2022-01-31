@@ -4,7 +4,6 @@
 from abc import ABCMeta, abstractmethod
 
 
-
 class IHostedTokenizationClient:
     """
     HostedTokenization client interface. Thread-safe.

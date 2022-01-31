@@ -4,7 +4,6 @@
 from abc import ABCMeta, abstractmethod
 
 
-
 class IMandatesClient:
     """
     Mandates client interface. Thread-safe.

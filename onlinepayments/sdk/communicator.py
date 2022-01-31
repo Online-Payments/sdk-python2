@@ -3,10 +3,10 @@ from urllib import quote
 from urlparse import urlparse
 
 from communication_exception import CommunicationException
+from not_found_exception import NotFoundException
 from onlinepayments.sdk.defaultimpl.default_connection import DefaultConnection
 from onlinepayments.sdk.defaultimpl.default_marshaller import DefaultMarshaller
 from onlinepayments.sdk.log.logging_capable import LoggingCapable
-from not_found_exception import NotFoundException
 from pooled_connection import PooledConnection
 from request_header import RequestHeader
 from response_exception import ResponseException

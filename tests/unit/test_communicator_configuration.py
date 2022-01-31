@@ -13,14 +13,14 @@ class CommunicatorConfigurationTest(unittest.TestCase):
         self.config = ConfigParser.ConfigParser()
 
         self.config.add_section("OnlinePaymentsSDK")
-        self.config.set('OnlinePaymentsSDK', "onlinePayments.api.endpoint.host", "payment.preprod.online-payments.com")
+        self.config.set('OnlinePaymentsSDK', "onlinePayments.api.endpoint.host", "example.com")
 
     def tearDown(self):
         self.config = None
 
     def assertDefaults(self, communicator_config):
         """Tests commonly used settings for testing url, authorization type, timeouts and max_connections"""
-        self.assertEqual("https://payment.preprod.online-payments.com", communicator_config.api_endpoint.geturl())
+        self.assertEqual("https://example.com", communicator_config.api_endpoint.geturl())
         self.assertEqual(AuthorizationType.V1HMAC, communicator_config.authorization_type)
         self.assertEqual(CommunicatorConfiguration().DEFAULT_CONNECT_TIMEOUT, communicator_config.connect_timeout)
         self.assertEqual(CommunicatorConfiguration().DEFAULT_SOCKET_TIMEOUT, communicator_config.socket_timeout)
@@ -81,7 +81,7 @@ class CommunicatorConfigurationTest(unittest.TestCase):
         self.config.set("OnlinePaymentsSDK", "onlinePayments.api.maxConnections", "300")
 
         communicator_config = CommunicatorConfiguration(self.config)
-        self.assertEqual("https://payment.preprod.online-payments.com", communicator_config.api_endpoint.geturl())
+        self.assertEqual("https://example.com", communicator_config.api_endpoint.geturl())
         self.assertEqual(AuthorizationType.V1HMAC, communicator_config.authorization_type)
         self.assertEqual(100, communicator_config.connect_timeout)
         self.assertEqual(200, communicator_config.socket_timeout)
@@ -96,7 +96,7 @@ class CommunicatorConfigurationTest(unittest.TestCase):
 
         communicator_config = CommunicatorConfiguration(self.config)
 
-        self.assertEqual("http://payment.preprod.online-payments.com", communicator_config.api_endpoint.geturl())
+        self.assertEqual("http://example.com", communicator_config.api_endpoint.geturl())
 
     def test_construct_from_properties_with_host_and_port(self):
         """Tests that constructing a communicator configuration from a host and port correctly processes this info"""
@@ -105,7 +105,7 @@ class CommunicatorConfigurationTest(unittest.TestCase):
 
         communicator_config = CommunicatorConfiguration(self.config)
 
-        self.assertEqual("https://payment.preprod.online-payments.com:8443", communicator_config.api_endpoint.geturl())
+        self.assertEqual("https://example.com:8443", communicator_config.api_endpoint.geturl())
 
     def test_construct_from_properties_with_host_scheme_port(self):
         """Tests that constructing a communicator configuration from host, scheme and port correctly processes this info"""
@@ -114,7 +114,7 @@ class CommunicatorConfigurationTest(unittest.TestCase):
 
         communicator_config = CommunicatorConfiguration(self.config)
 
-        self.assertEqual("http://payment.preprod.online-payments.com:8080", communicator_config.api_endpoint.geturl())
+        self.assertEqual("http://example.com:8080", communicator_config.api_endpoint.geturl())
 
     def test_construct_from_properties_with_metadata(self):
         """Tests that constructing a communicator configuration using integrator and shopping cart data constructs properly"""

@@ -4,7 +4,6 @@
 from abc import ABCMeta, abstractmethod
 
 
-
 class ISessionsClient:
     """
     Sessions client interface. Thread-safe.

@@ -4,7 +4,6 @@
 from abc import ABCMeta, abstractmethod
 
 
-
 class IHostedCheckoutClient:
     """
     HostedCheckout client interface. Thread-safe.

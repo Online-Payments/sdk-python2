@@ -4,7 +4,6 @@ import thread
 from BaseHTTPServer import BaseHTTPRequestHandler
 
 from onlinepayments.sdk.communicator import Communicator
-from onlinepayments.sdk.defaultimpl.authorization_type import AuthorizationType
 from onlinepayments.sdk.defaultimpl.default_authenticator import DefaultAuthenticator
 from onlinepayments.sdk.defaultimpl.default_connection import DefaultConnection
 from onlinepayments.sdk.endpoint_configuration import EndpointConfiguration
