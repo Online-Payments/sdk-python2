@@ -13,6 +13,8 @@ class RefundMobileMethodSpecificOutput(DataObject):
     @property
     def network(self):
         """
+        | The card network that was used for a mobile payment method operation
+
         Type: str
         """
         return self.__network

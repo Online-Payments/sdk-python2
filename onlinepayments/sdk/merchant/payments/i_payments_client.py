@@ -74,12 +74,13 @@ class IPaymentsClient:
         pass
 
     @abstractmethod
-    def cancel_payment(self, payment_id, context=None):
+    def cancel_payment(self, payment_id, body=None, context=None):
         """
         Resource /v2/{merchantId}/payments/{paymentId}/cancel - Cancel payment
 
 
         :param payment_id: str
+        :param body: :class:`onlinepayments.sdk.domain.cancel_payment_request.CancelPaymentRequest`
         :param context: :class:`onlinepayments.sdk.call_context.CallContext`
         :return: :class:`onlinepayments.sdk.domain.cancel_payment_response.CancelPaymentResponse`
         :raise: ValidationException if the request was not correct and couldn't be processed (HTTP status code 400)
