@@ -15,6 +15,7 @@ class AirlineData(DataObject):
     __agent_numeric_code = None
     __code = None
     __flight_date = None
+    __flight_indicator = None
     __flight_legs = None
     __invoice_number = None
     __is_e_ticket = None
@@ -29,6 +30,7 @@ class AirlineData(DataObject):
     __pnr = None
     __point_of_sale = None
     __pos_city_code = None
+    __ticket_currency = None
     __ticket_delivery_method = None
     __ticket_number = None
     __total_fare = None
@@ -78,6 +80,19 @@ class AirlineData(DataObject):
     @flight_date.setter
     def flight_date(self, value):
         self.__flight_date = value
+
+    @property
+    def flight_indicator(self):
+        """
+        | Indicator representing the type of flight on the itinerary.
+
+        Type: str
+        """
+        return self.__flight_indicator
+
+    @flight_indicator.setter
+    def flight_indicator(self, value):
+        self.__flight_indicator = value
 
     @property
     def flight_legs(self):
@@ -281,6 +296,19 @@ class AirlineData(DataObject):
         self.__pos_city_code = value
 
     @property
+    def ticket_currency(self):
+        """
+        | Three-letter ISO currency code representing the currency in which ticket purchase amount is expressed.
+
+        Type: str
+        """
+        return self.__ticket_currency
+
+    @ticket_currency.setter
+    def ticket_currency(self, value):
+        self.__ticket_currency = value
+
+    @property
     def ticket_delivery_method(self):
         """
         | Deprecated: This field is not used by any payment product
@@ -376,6 +404,8 @@ class AirlineData(DataObject):
             dictionary['code'] = self.code
         if self.flight_date is not None:
             dictionary['flightDate'] = self.flight_date
+        if self.flight_indicator is not None:
+            dictionary['flightIndicator'] = self.flight_indicator
         if self.flight_legs is not None:
             dictionary['flightLegs'] = []
             for element in self.flight_legs:
@@ -410,6 +440,8 @@ class AirlineData(DataObject):
             dictionary['pointOfSale'] = self.point_of_sale
         if self.pos_city_code is not None:
             dictionary['posCityCode'] = self.pos_city_code
+        if self.ticket_currency is not None:
+            dictionary['ticketCurrency'] = self.ticket_currency
         if self.ticket_delivery_method is not None:
             dictionary['ticketDeliveryMethod'] = self.ticket_delivery_method
         if self.ticket_number is not None:
@@ -432,6 +464,8 @@ class AirlineData(DataObject):
             self.code = dictionary['code']
         if 'flightDate' in dictionary:
             self.flight_date = dictionary['flightDate']
+        if 'flightIndicator' in dictionary:
+            self.flight_indicator = dictionary['flightIndicator']
         if 'flightLegs' in dictionary:
             if not isinstance(dictionary['flightLegs'], list):
                 raise TypeError('value \'{}\' is not a list'.format(dictionary['flightLegs']))
@@ -470,6 +504,8 @@ class AirlineData(DataObject):
             self.point_of_sale = dictionary['pointOfSale']
         if 'posCityCode' in dictionary:
             self.pos_city_code = dictionary['posCityCode']
+        if 'ticketCurrency' in dictionary:
+            self.ticket_currency = dictionary['ticketCurrency']
         if 'ticketDeliveryMethod' in dictionary:
             self.ticket_delivery_method = dictionary['ticketDeliveryMethod']
         if 'ticketNumber' in dictionary:

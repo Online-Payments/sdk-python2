@@ -29,6 +29,8 @@ class CaptureResponse(DataObject):
     @property
     def id(self):
         """
+        | Our unique payment transaction identifier
+
         Type: str
         """
         return self.__id
