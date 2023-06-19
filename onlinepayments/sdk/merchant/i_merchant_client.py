@@ -38,6 +38,15 @@ class IMerchantClient:
         pass
 
     @abstractmethod
+    def payment_links(self):
+        """
+        Resource /v2/{merchantId}/paymentlinks
+
+        :return: :class:`onlinepayments.sdk.merchant.paymentlinks.i_payment_links_client.IPaymentLinksClient`
+        """
+        pass
+
+    @abstractmethod
     def payments(self):
         """
         Resource /v2/{merchantId}/payments
