@@ -31,7 +31,7 @@ class CardEssentials(DataObject):
     @property
     def card_number(self):
         """
-        | The complete credit/debit card number
+        | The masked credit/debit card number
 
         Type: str
         """
