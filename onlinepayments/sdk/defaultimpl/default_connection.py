@@ -6,12 +6,14 @@ from urlparse import urlparse
 import requests
 from requests.adapters import HTTPAdapter
 from requests.exceptions import RequestException, Timeout
+from requests_toolbelt import MultipartEncoder
 
 from onlinepayments.sdk.communication_exception import CommunicationException
 from onlinepayments.sdk.endpoint_configuration import EndpointConfiguration
 from onlinepayments.sdk.log.request_log_message import RequestLogMessage
 from onlinepayments.sdk.log.response_log_message import ResponseLogMessage
 from onlinepayments.sdk.pooled_connection import PooledConnection
+from onlinepayments.sdk.multipart_form_data_object import MultipartFormDataObject
 
 CHARSET = "UTF-8"
 
@@ -91,6 +93,8 @@ class DefaultConnection(PooledConnection):
          representing the request headers
         :param body: the request body
         """
+        if isinstance(body, MultipartFormDataObject):
+            body = self.__to_multipart_encoder(body)
         return self._request('post', url, request_headers, body)
 
     def put(self, url, request_headers, body):
@@ -102,6 +106,17 @@ class DefaultConnection(PooledConnection):
         :param body: the request body
         """
         return self._request('put', url, request_headers, body)
+    
+    def __to_multipart_encoder(self, multipart):
+        fields = {}
+        for name, value in multipart.values.iteritems():
+            fields[name] = value
+        for name, uploadable_file in multipart.files.iteritems():
+            fields[name] = (uploadable_file.file_name, uploadable_file.content, uploadable_file.content_type)
+        encoder = MultipartEncoder(fields=fields, boundary=multipart.boundary)
+        if encoder.content_type != multipart.content_type:
+            raise ValueError("MultipartEncoder did not create the expected content type")
+        return encoder
 
     class _ToResult(object):
         def __call__(self, func):
@@ -131,6 +146,12 @@ class DefaultConnection(PooledConnection):
         if headers and not isinstance(headers, dict):
             headers = {param.name: param.value for param in headers}
 
+        # generate random uuid for traceability
+        _id = str(uuid.uuid4())
+
+        # set X-Request-Id for better traceability
+        headers['X-Request-Id'] = _id;
+
         # send request with all parameters not declared in session and with
         # callback for logging response
         request = requests.Request(method, url, headers=headers, data=body,
@@ -138,7 +159,6 @@ class DefaultConnection(PooledConnection):
         prepped_request = self.__requests_session.prepare_request(request)
         # add timestamp to request for later reference
         prepped_request.timestamp = datetime.now()
-        _id = str(uuid.uuid4())
         # store random id in request so it can be matched with its response
         # in logging
         prepped_request.id = _id
