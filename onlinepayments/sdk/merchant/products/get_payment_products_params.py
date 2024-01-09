@@ -63,7 +63,7 @@ class GetPaymentProductsParams(ParamRequest):
         """
         | Whole amount in cents (not containing any decimals)
 
-        Type: long
+        Type: int
         """
         return self.__amount
 

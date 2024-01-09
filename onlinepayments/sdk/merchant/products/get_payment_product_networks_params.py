@@ -48,7 +48,7 @@ class GetPaymentProductNetworksParams(ParamRequest):
         """
         | Amount in cents and always having 2 decimals
 
-        Type: long
+        Type: int
         """
         return self.__amount
 

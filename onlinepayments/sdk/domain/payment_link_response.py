@@ -4,7 +4,7 @@
 #
 from onlinepayments.sdk.data_object import DataObject
 from onlinepayments.sdk.domain.payment_link_event import PaymentLinkEvent
-from onlinepayments.sdk.domain.payment_link_order import PaymentLinkOrder
+from onlinepayments.sdk.domain.payment_link_order_output import PaymentLinkOrderOutput
 
 
 class PaymentLinkResponse(DataObject):
@@ -24,7 +24,7 @@ class PaymentLinkResponse(DataObject):
     @property
     def expiration_date(self):
         """
-        | The date after which the payment link will not be usable to complete the payment. The date sent must contain the UTC offset.
+        | The date after which the payment link will not be usable to complete the payment. The date will contain the UTC offset.
 
         Type: str
         """
@@ -74,9 +74,9 @@ class PaymentLinkResponse(DataObject):
     @property
     def payment_link_order(self):
         """
-        | An object containing the details of the related payment.
+        | An object containing the details of the related payment output.
 
-        Type: :class:`onlinepayments.sdk.domain.payment_link_order.PaymentLinkOrder`
+        Type: :class:`onlinepayments.sdk.domain.payment_link_order_output.PaymentLinkOrderOutput`
         """
         return self.__payment_link_order
 
@@ -168,7 +168,7 @@ class PaymentLinkResponse(DataObject):
         if 'paymentLinkOrder' in dictionary:
             if not isinstance(dictionary['paymentLinkOrder'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['paymentLinkOrder']))
-            value = PaymentLinkOrder()
+            value = PaymentLinkOrderOutput()
             self.payment_link_order = value.from_dictionary(dictionary['paymentLinkOrder'])
         if 'recipientName' in dictionary:
             self.recipient_name = dictionary['recipientName']

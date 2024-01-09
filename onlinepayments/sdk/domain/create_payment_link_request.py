@@ -3,7 +3,7 @@
 # This class was auto-generated.
 #
 from onlinepayments.sdk.data_object import DataObject
-from onlinepayments.sdk.domain.payment_link_order import PaymentLinkOrder
+from onlinepayments.sdk.domain.payment_link_order_input import PaymentLinkOrderInput
 
 
 class CreatePaymentLinkRequest(DataObject):
@@ -45,9 +45,9 @@ class CreatePaymentLinkRequest(DataObject):
     @property
     def payment_link_order(self):
         """
-        | An object containing the details of the related payment.
+        | An object containing the details of the related payment input.
 
-        Type: :class:`onlinepayments.sdk.domain.payment_link_order.PaymentLinkOrder`
+        Type: :class:`onlinepayments.sdk.domain.payment_link_order_input.PaymentLinkOrderInput`
         """
         return self.__payment_link_order
 
@@ -89,7 +89,7 @@ class CreatePaymentLinkRequest(DataObject):
         if 'paymentLinkOrder' in dictionary:
             if not isinstance(dictionary['paymentLinkOrder'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['paymentLinkOrder']))
-            value = PaymentLinkOrder()
+            value = PaymentLinkOrderInput()
             self.payment_link_order = value.from_dictionary(dictionary['paymentLinkOrder'])
         if 'recipientName' in dictionary:
             self.recipient_name = dictionary['recipientName']
