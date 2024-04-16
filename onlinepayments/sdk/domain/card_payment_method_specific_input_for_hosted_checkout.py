@@ -11,6 +11,7 @@ class CardPaymentMethodSpecificInputForHostedCheckout(DataObject):
     """
 
     __group_cards = None
+    __payment_product_preferred_order = None
 
     @property
     def group_cards(self):
@@ -26,14 +27,38 @@ class CardPaymentMethodSpecificInputForHostedCheckout(DataObject):
     def group_cards(self, value):
         self.__group_cards = value
 
+    @property
+    def payment_product_preferred_order(self):
+        """
+        | This array contains the payment product identifiers representing the brands. For co-badged cards, this displays their available brands in the order defined by this array, when groupCards is activated.
+
+        Type: list[int]
+        """
+        return self.__payment_product_preferred_order
+
+    @payment_product_preferred_order.setter
+    def payment_product_preferred_order(self, value):
+        self.__payment_product_preferred_order = value
+
     def to_dictionary(self):
         dictionary = super(CardPaymentMethodSpecificInputForHostedCheckout, self).to_dictionary()
         if self.group_cards is not None:
             dictionary['groupCards'] = self.group_cards
+        if self.payment_product_preferred_order is not None:
+            dictionary['paymentProductPreferredOrder'] = []
+            for element in self.payment_product_preferred_order:
+                if element is not None:
+                    dictionary['paymentProductPreferredOrder'].append(element)
         return dictionary
 
     def from_dictionary(self, dictionary):
         super(CardPaymentMethodSpecificInputForHostedCheckout, self).from_dictionary(dictionary)
         if 'groupCards' in dictionary:
             self.group_cards = dictionary['groupCards']
+        if 'paymentProductPreferredOrder' in dictionary:
+            if not isinstance(dictionary['paymentProductPreferredOrder'], list):
+                raise TypeError('value \'{}\' is not a list'.format(dictionary['paymentProductPreferredOrder']))
+            self.payment_product_preferred_order = []
+            for element in dictionary['paymentProductPreferredOrder']:
+                self.payment_product_preferred_order.append(element)
         return self
