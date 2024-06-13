@@ -256,8 +256,7 @@ class AirlineData(DataObject):
     @property
     def pnr(self):
         """
-        | Deprecated: This field is not used by any payment product
-        | Passenger name record
+        | ***Deprecated***. Use passengers instead.
 
         Type: str
         """
