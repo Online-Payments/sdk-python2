@@ -5,11 +5,9 @@
 from onlinepayments.sdk.data_object import DataObject
 
 
-class MandateAddress(DataObject):
+class MandateAddressResponse(DataObject):
     """
-    | Object containing consumer address details.
-    | Required for Create mandate and Create payment calls.
-    | Required for Create hostedCheckout calls where the IBAN is also provided.
+    | Object containing consumer address details
     """
 
     __city = None
@@ -22,8 +20,6 @@ class MandateAddress(DataObject):
     def city(self):
         """
         | City
-        | Required for Create mandate and Create payment calls.
-        | Required for Create hostedCheckout calls where the IBAN is also provided.
 
         Type: str
         """
@@ -37,8 +33,6 @@ class MandateAddress(DataObject):
     def country_code(self):
         """
         | ISO 3166-1 alpha-2 country code.
-        | Required for Create mandate and Create payment calls.
-        | Required for Create hostedCheckout calls where the IBAN is also provided.
 
         Type: str
         """
@@ -64,9 +58,7 @@ class MandateAddress(DataObject):
     @property
     def street(self):
         """
-        | Streetname.
-        | Required for Create mandate and Create payment calls.
-        | Required for Create hostedCheckout calls where the IBAN is also provided.
+        | Streetname
 
         Type: str
         """
@@ -79,9 +71,7 @@ class MandateAddress(DataObject):
     @property
     def zip(self):
         """
-        | Zip code.
-        | Required for Create mandate and Create payment calls.
-        | Required for Create hostedCheckout calls where the IBAN is also provided.
+        | Zip code
 
         Type: str
         """
@@ -92,7 +82,7 @@ class MandateAddress(DataObject):
         self.__zip = value
 
     def to_dictionary(self):
-        dictionary = super(MandateAddress, self).to_dictionary()
+        dictionary = super(MandateAddressResponse, self).to_dictionary()
         if self.city is not None:
             dictionary['city'] = self.city
         if self.country_code is not None:
@@ -106,7 +96,7 @@ class MandateAddress(DataObject):
         return dictionary
 
     def from_dictionary(self, dictionary):
-        super(MandateAddress, self).from_dictionary(dictionary)
+        super(MandateAddressResponse, self).from_dictionary(dictionary)
         if 'city' in dictionary:
             self.city = dictionary['city']
         if 'countryCode' in dictionary:

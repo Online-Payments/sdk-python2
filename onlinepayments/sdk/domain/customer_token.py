@@ -16,7 +16,7 @@ class CustomerToken(DataObject):
     @property
     def billing_address(self):
         """
-        | Object containing billing address details
+        | Object containing billing address details.
 
         Type: :class:`onlinepayments.sdk.domain.address.Address`
         """

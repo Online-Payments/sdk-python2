@@ -7,7 +7,7 @@ from onlinepayments.sdk.data_object import DataObject
 
 class Address(DataObject):
     """
-    | Object containing billing address details
+    | Object containing billing address details.
     """
 
     __additional_info = None
